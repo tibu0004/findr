@@ -96,8 +96,10 @@ let app = {
 
     addMarker: function(ev) {
       console.log("addMarker", ev);
-      let Id = Math.floor(Date.now() / 1000);
       let InfoDesc = prompt("description", "");
+      let Id = Math.floor(Date.now() / 1000);
+      if(InfoDesc != null){
+        if(InfoDesc.trim() !== ""){
       let marker = new google.maps.Marker({
         id: Id,
         map: app.map,
@@ -133,6 +135,7 @@ let app = {
       marker.addListener("click", app.markerClick);
       //add double click listener to Marker
       marker.addListener("dblclick", app.markerDblClick);
+    }}
     },
     markerClick: function(ev) {
       console.log("Click", ev);
